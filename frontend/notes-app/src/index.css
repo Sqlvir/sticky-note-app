@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    html {
+        font-family: "Poppins", "sans-serif";
+    }
+    body {
+      background-color: #fdfeff;
+      overflow-x: hidden;
+    }
+    .primary-logout{
+      color:#4e9df8cb!important;
+      font-style: italic;
+   }
+   .searchbox-width{
+    width:30rem;
+   }
+  
+   .searchbox::placeholder{
+     font-size: 13px!important;
+     font-weight:400!important;
+     color:#333!important;
+   }
+
+   .addNotes:hover{
+      border-radius: 50%;
+   }
+
+   .addNotes:hover .addnotesButton{
+      color:#fff;
+      font-weight:800!important;
+   }
+
+   .addNotes{
+      background: rgb(241 245 249);
+      position: fixed!important;
+   }
+
+   .tag-text{
+    padding-top:30px;
+   }
+
+   .card-button{
+    padding-top:30px;
+   }
+
+   .card-button .edit-button:hover{
+     color:#0b0b0bde;
+   }
+
+   .card-button .delete-button:hover{
+    color:#0b0b0bb1;
+  }
+
+  .tagButton{
+    border:1px solid #f7971e!important;
+  }
+
+  .tagButton .tagButtonIcon{
+    color:#f7971e;
+  }
+
+  .tagButton:hover{
+    border-radius: 50%;
+    background: linear-gradient(to right, #f7971e, #ffd200)!important;
+    border:none!important;
+  }
+
+  .tagButton:hover .tagButtonIcon{
+    color:#fff;
+  }
+
+  .addNotes:hover{
+     /*background-color: rgb(37 99 235 / 1);*/
+     background: linear-gradient(to right, #f7971e, #ffd200);
+
+  }
+
+  .pinNotes:hover{
+    /*background-color: rgb(241 245 249 / 1);*/
+    background-color: rgb(236, 240, 241/3);
+    border: 1px solid #f0eded;
+  }
+
+  .pinNotes:hover .icon-btn{
+     color: black;
+  }
+
+  .drop-shadow{
+    padding-left: 6%!important;
+    padding-right: 6%!important;
+    position: fixed!important;
+    width: 100%;
+    margin-top:0px;
+  }
+
+  .card-section{
+    padding-top:70px;
+  }
+
+  .drop-shadow img{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+  }
+
+  .drop-shadow h2 span{
+     font-size:22px;
+  }
+
+  .form-style h2 span{
+    font-size:27px;
+  }
+
+  .form-style h2{
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .form-style img{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-left:3px;
+  }
+
+  .form-style .register-button, .form-style .signin-button{
+    background: #f48907;
+    color:#fff;
+    font-weight: 600;
+  }
+
+  .form-style .register-button:hover, .form-style .signin-button:hover{
+    background: #fcb155;
+    color:#000;
+  }
+
+  .form-style .signin-text, .form-style .signup-text{
+    background: linear-gradient(#f7971e, #ffd200);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+
+  .form-style .signin-text:hover, .form-style .signup-text:hover{
+    border-bottom: 1px solid #feae4d;
+  }
+
+  .showPassword{
+    color: #ff9c23!important;
+    font-weight:600;
+  }
+
+  .addNotes{
+    margin-right:3%!important;
+  }
+
+  .add-Notes{
+     /*background-color: #ffb700!important;
+     color:#000!important;*/
+     background: #f48907!important;
+     color:#fff!important;
+     font-weight: 600;
+  }
+
+  .add-Notes:hover{
+    /*background: #feae4d!important;*/
+    background: #fcb155!important;
+    color:#000!important;
+    transition: all;
+    transition: ease-in-out;
+  }
+
+  .login-box{
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+    border-radius: 7px!important;
+  }
+
+  .signup-box{
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+    border-radius: 7px!important;
+  }
+
+  .profile-avatar{
+    background-color: rgb(241 245 249 / 1);
+  }
+
+  .emptycards{
+    margin-top: 12%;
+  }
+
+  .notes-img{
+    width:400px!important;
+    margin-bottom:20px;
+  }
+
+  /*.card-notes{
+    width:300px!important;
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(4, minmax(0, 1fr))!important;
+  }
+
+  .gap-4 {
+    gap: 2rem!important;
+}*/
+
+.hashtags{
+  font-weight: 800;
+}
+
+.card-notes .child-box { 
+  text-overflow: ellipsis; 
+  display: inline-block; 
+  max-width: 70%; 
+  width: auto; 
+  white-space: nowrap; 
+  overflow: hidden; 
+} 
+
+.card-notes .child-box.no-max-width { 
+max-width: none; 
+} 
+
+.card-notes .child-box::before { 
+display: none; 
+} 
+
+.card-notes .box::after { 
+  content: 'X'; 
+  display: inline-block; 
+}
+
+}
+
+@layer components{
+   .input-box{
+     @apply w-full text-sm bg-transparent border-[1.5px] px-5 py-3 rounded mb-4 outline-none;
+   }
+
+   .btn-primary{
+      @apply w-full text-sm bg-primary text-white p-2 rounded my-1 hover:bg-blue-600;
+   }
+
+   .icon-btn {
+     @apply text-xl text-slate-300 cursor-pointer hover:text-primary;
+   }
+
+   .input-label{
+     @apply text-xs text-slate-400;
+   }
+}

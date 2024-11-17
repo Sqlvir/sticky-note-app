@@ -2,4 +2,3 @@ Date - 17 Nov
 
 1. Create a new git branch using command line.
 2. Roll back the latest commit changes.
-3. 

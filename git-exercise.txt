@@ -6,4 +6,4 @@ Date - 17 Nov
 Date - 23 Nov
 =============
 
-1.
+1. Today's topic is DevOps and CI/CD pipeline.

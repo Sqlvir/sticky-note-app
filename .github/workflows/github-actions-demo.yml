@@ -8,6 +8,7 @@ jobs:
       - run: echo "Build step..."
 
   Test:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - run: echo "Test step..."

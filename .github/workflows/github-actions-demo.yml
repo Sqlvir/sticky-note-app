@@ -5,7 +5,7 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - run: ddddldlldld "Build step..."
+      - run: echo "Build step..."
 
   Test:
     needs: Build

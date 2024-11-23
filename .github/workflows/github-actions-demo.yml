@@ -2,7 +2,13 @@ name: Hello World
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Hello-World:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - run: echo "Build step..."
+
+  Test:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test step..."

@@ -25,7 +25,7 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v4
         with:
-          context: frontend/.
+          context: frontend/notes-app/.
           push: true
           tags: sqlviren/sticky-note-frontend:latest
       

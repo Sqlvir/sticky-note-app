@@ -1,11 +1,15 @@
-name: Hello World
+name: Sticky Note App
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: 
+  push: 
+      branches:
+        - workflow/multistep
 jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Build step..."
+      - name: Checkout code
+        uses: actions/checkout@v2
 
   Test:
     needs: Build

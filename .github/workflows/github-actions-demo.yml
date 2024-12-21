@@ -34,8 +34,4 @@ jobs:
         with:
           context: backend/.
           push: true
-<<<<<<< HEAD
           tags: sqlviren/sticky-note-backend:latest
-=======
-          tags: sqlviren/sticky-note-backend:latest
->>>>>>> b90f327a2526921cf3578eb7e5098a85170ee51b

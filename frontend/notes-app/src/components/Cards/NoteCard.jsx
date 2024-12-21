@@ -30,7 +30,7 @@ const NoteCard = ({
 
       <div className='flex items-center justify-between mt-2'>
           <div className='text-xs text-slate-500 tag-text'>
-            <span className='text-slate-800'>{tags.map((item) => `#${item}, `)}</span> | <span className='text-xs text-slate-500'>{moment(date).format('DD MMM YYYY')}</span>
+            <span className='text-slate-800'>{tags.map((item) => `#${item} `)}</span> | <span className='text-xs text-slate-500'>{moment(date).format('DD MMM YYYY')}</span>
           </div>
           <div className='flex items-center-gap-6 card-button'>
                 <span className="w-8 h-8 flex items-center justify-center rounded-2xl hover:shadow-md transition-all ease-in-out right-10 bottom-10 pinNotes">

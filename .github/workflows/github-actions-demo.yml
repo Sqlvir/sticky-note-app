@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 name: Sticky Note App
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 

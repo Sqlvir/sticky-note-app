@@ -2,7 +2,7 @@ name: Build sticky-note-app
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "workflow/multistep" ]
   #pull_request:
     #branches: [ "master" ]
 

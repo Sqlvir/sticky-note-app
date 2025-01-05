@@ -3,10 +3,10 @@ import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/re
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import Login from '../../pages/Login/login';
-//import axiosInstance from '../../utils/axiosInstance';
+import axiosInstance from '../../utils/axiosInstance';
 
 // Mock the axios instance
-//vi.mock('../../utils/axiosInstance');
+vi.mock('../../utils/axiosInstance');
 
 // Mock useNavigate
 const mockNavigate = vi.fn();
@@ -84,33 +84,33 @@ describe('Login Component', () => {
     expect(screen.getByTestId('password-input'));
   });
 
-//   it('successfully logs in user and navigates', async () => {
-//     const mockResponse = {
-//       data: {
-//         accessToken: 'fake-token-123',
-//       },
-//     };
+  it('successfully logs in user and navigates', async () => {
+    const mockResponse = {
+      data: {
+        accessToken: 'fake-token-123',
+      },
+    };
 
-//     axiosInstance.post.mockResolvedValueOnce(mockResponse);
-//     renderLogin();
+    axiosInstance.post.mockResolvedValueOnce(mockResponse);
+    renderLogin();
 
-//     const emailInput = screen.getByPlaceholderText('Email');
-//     const passwordInput = screen.getByPlaceholderText('Password');
-//     const submitButton = screen.getByRole('button', { name: /signin/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const submitButton = screen.getByRole('button', { name: /signin/i });
 
-//     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-//     fireEvent.change(passwordInput, { target: { value: 'password123' } });
-//     fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'user@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    fireEvent.click(submitButton);
 
-//     await waitFor(() => {
-//       expect(axiosInstance.post).toHaveBeenCalledWith('/login', {
-//         email: 'test@example.com',
-//         password: 'password123',
-//       });
-//       expect(mockNavigate).toHaveBeenCalledWith('/stickynote');
-//       expect(localStorage.getItem('token')).toBe('fake-token-123');
-//     });
-//   });
+    await waitFor(() => {
+      expect(axiosInstance.post).toHaveBeenCalledWith('/login', {
+        email: 'user@example.com',
+        password: 'password123',
+      });
+      expect(mockNavigate).toHaveBeenCalledWith('/stickynote');
+      expect(localStorage.getItem('token')).toBe('fake-token-123');
+    });
+  });
 
 //   it('handles login error from server', async () => {
 //     const mockError = {

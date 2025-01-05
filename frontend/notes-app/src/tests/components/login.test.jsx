@@ -48,11 +48,6 @@ describe('Login Component', () => {
     const emailInput = screen.getByPlaceholderText('Email');
     const submitButton = screen.getByRole('button', { name: /signin/i });
 
-    // fireEvent.change(emailInput, { target: { value: 'emailtest@gmail.com' } });;
-    // fireEvent.click(submitButton);
-
-    //expect(screen.getByText('Please enter a valid email address.'));
-
     const invalidEmails = [
         'test@',
         'test@.com',
@@ -112,35 +107,35 @@ describe('Login Component', () => {
     });
   });
 
-//   it('handles login error from server', async () => {
-//     const mockError = {
-//       response: {
-//         data: {
-//           message: 'Invalid credentials',
-//         },
-//       },
-//     };
+  it('handles login error from server', async () => {
+    const mockError = {
+      response: {
+        data: {
+          message: 'Invalid credentials',
+        },
+      },
+    };
 
-//     axiosInstance.post.mockRejectedValueOnce(mockError);
-//     renderLogin();
+    axiosInstance.post.mockRejectedValueOnce(mockError);
+    renderLogin();
 
-//     const emailInput = screen.getByPlaceholderText('Email');
-//     const passwordInput = screen.getByPlaceholderText('Password');
-//     const submitButton = screen.getByRole('button', { name: /signin/i });
+    const emailInput = screen.getByPlaceholderText('Email');
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const submitButton = screen.getByRole('button', { name: /signin/i });
 
-//     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-//     fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
-//     fireEvent.click(submitButton);
+    fireEvent.change(emailInput, { target: { value: 'user@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    fireEvent.click(submitButton);
 
-//     await waitFor(() => {
-//       expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
-//     });
-//   });
+    await waitFor(() => {
+      expect(screen.getByText('Invalid credentials'));
+    });
+  });
 
-//   it('navigates to signup page when clicking create account link', () => {
-//     renderLogin();
-//     const signupLink = screen.getByText('Create Account');
-//     expect(signupLink.getAttribute('href')).toBe('/signup');
-//   });
+  it('navigates to signup page when clicking create account link', () => {
+    renderLogin();
+    const signupLink = screen.getByText('Create Account');
+    expect(signupLink.getAttribute('href')).toBe('/signup');
+  });
 });
 

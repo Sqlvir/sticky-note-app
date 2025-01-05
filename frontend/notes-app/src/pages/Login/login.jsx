@@ -65,6 +65,7 @@ const login = () => {
                type="text"
                placeholder="Email"
                className="input-box"
+               data-testid="email-input"
                value={email}
                onChange={(e) => setEmail(e.target.value)}
             />

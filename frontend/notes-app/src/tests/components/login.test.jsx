@@ -1,36 +1,193 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { it, describe } from "vitest";
-import Login from "../../pages/Login/login";
-import { MemoryRouter as Router, Routes, Route } from "react-router-dom";
+// import React from "react";
+// import { render, screen, fireEvent } from "@testing-library/react";
+// import { it,expect, describe, vi, beforeEach } from "vitest";
+// import Login from "../../pages/Login/login";
+// import { BrowserRouter} from "react-router-dom";
 
-const renderLoginPage = () => {
-    render(
-            <Router initialEntries={['/login']}>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                </Routes>
-            </Router>
-    );
-};
 
-describe('Login component', () => {
-    it("validate function should pass on correct input ", () => {
-        /*render(<Login />);
-        const inputNode = screen.getByPlaceholderText('Email');
-        <Router>
-                <Login />
-        </Router>
-        screen.debug();*/
-        renderLoginPage();
-        const emailInput = screen.getByPlaceholderText('Email:');
-        const passwordInput = screen.getByPlaceholderText('Password:');
+// describe('Login component', () => {
+//     beforeEach(() => {
+//         vi.clearAllMocks();
+//       });
 
-        fireEvent.change(emailInput, { target: { value: 'testuser@gmail.com' } });
-        fireEvent.change(passwordInput, { target: { value: 'testuser@123' } });
+//       const renderLoginPage = () => {
+//         render(
+//             <BrowserRouter>
+//                 <Login />
+//             </BrowserRouter>
+//         );
+//     };
+    
+//     it("validate function should pass on correct input ", () => {
+//         /*render(<Login />);
+//         const inputNode = screen.getByPlaceholderText('Email');
+//         <Router>
+//                 <Login />
+//         </Router>*/
+     
+//         renderLoginPage();
+//         expect(screen.getByPlaceholderText('Email'));
+//         expect(screen.getByPlaceholderText('Password'));
 
-        expect(emailInput.value).toBe('testuser@gmail.com');
-        expect(passwordInput.value).toBe('testuser@123');
+//         screen.debug();
 
-    });
+//     });
+
+//     it('displays error for invalid email', async () => {
+//         renderLoginPage();
+//         const emailInput = screen.getByPlaceholderText('Email', { exact: true });
+//         const submitButton = screen.getByRole('button', { name: /signin/i });
+    
+//         fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
+//         fireEvent.click(submitButton);
+    
+//         expect(screen.getByText('Please enter a valid email address.')).toBeInTheDocument();
+//       });
+
+    
+// });
+import React from 'react';
+import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { BrowserRouter } from 'react-router-dom';
+import Login from '../../pages/Login/login';
+import axiosInstance from '../../utils/axiosInstance';
+
+// Mock the axios instance
+vi.mock('../../utils/axiosInstance');
+
+// Mock useNavigate
+const mockNavigate = vi.fn();
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  };
 });
+
+describe('Login Component', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    cleanup(); // Ensure DOM is cleaned after each test
+  });
+
+  const renderLogin = () => {
+    render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+  };
+
+  it('renders login form correctly', () => {
+    renderLogin();
+    expect(screen.getByPlaceholderText('Email'));
+    expect(screen.getByPlaceholderText('Password'));
+    expect(screen.getByRole('button', { name: /signin/i }));
+  });
+
+  it('displays error for invalid email', async () => {
+    renderLogin();
+    screen.debug();
+    const emailInput = screen.getByPlaceholderText('Email');
+    const submitButton = screen.getByRole('button', { name: /signin/i });
+
+    // fireEvent.change(emailInput, { target: { value: 'emailtest@gmail.com' } });;
+    // fireEvent.click(submitButton);
+
+    //expect(screen.getByText('Please enter a valid email address.'));
+
+    const invalidEmails = [
+        'test@',
+        'test@.com',
+        '@domain.com',
+        'test@domain.',
+        'test.com',
+        'test@domain'
+    ];
+
+    invalidEmails.forEach(email => {
+        fireEvent.change(emailInput, { target: { value: email } });
+        fireEvent.click(submitButton);
+        expect(screen.getByText('Please enter a valid email address.'));
+    });
+
+  });
+
+//   it('displays error for empty password', () => {
+//     renderLogin();
+//     screen.debug();
+
+//     const passwordInput = screen.getByPlaceholderText('Password');
+//     const submitButton = screen.getByRole('button', { name: /signin/i });
+
+//     fireEvent.change(passwordInput, { target: { value: '' } });
+//     fireEvent.click(submitButton);
+
+//     expect(screen.getByText('Password is required'));
+//   });
+
+//   it('successfully logs in user and navigates', async () => {
+//     const mockResponse = {
+//       data: {
+//         accessToken: 'fake-token-123',
+//       },
+//     };
+
+//     axiosInstance.post.mockResolvedValueOnce(mockResponse);
+//     renderLogin();
+
+//     const emailInput = screen.getByPlaceholderText('Email');
+//     const passwordInput = screen.getByPlaceholderText('Password');
+//     const submitButton = screen.getByRole('button', { name: /signin/i });
+
+//     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+//     fireEvent.change(passwordInput, { target: { value: 'password123' } });
+//     fireEvent.click(submitButton);
+
+//     await waitFor(() => {
+//       expect(axiosInstance.post).toHaveBeenCalledWith('/login', {
+//         email: 'test@example.com',
+//         password: 'password123',
+//       });
+//       expect(mockNavigate).toHaveBeenCalledWith('/stickynote');
+//       expect(localStorage.getItem('token')).toBe('fake-token-123');
+//     });
+//   });
+
+//   it('handles login error from server', async () => {
+//     const mockError = {
+//       response: {
+//         data: {
+//           message: 'Invalid credentials',
+//         },
+//       },
+//     };
+
+//     axiosInstance.post.mockRejectedValueOnce(mockError);
+//     renderLogin();
+
+//     const emailInput = screen.getByPlaceholderText('Email');
+//     const passwordInput = screen.getByPlaceholderText('Password');
+//     const submitButton = screen.getByRole('button', { name: /signin/i });
+
+//     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+//     fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
+//     fireEvent.click(submitButton);
+
+//     await waitFor(() => {
+//       expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
+//     });
+//   });
+
+//   it('navigates to signup page when clicking create account link', () => {
+//     renderLogin();
+//     const signupLink = screen.getByText('Create Account');
+//     expect(signupLink.getAttribute('href')).toBe('/signup');
+//   });
+});
+

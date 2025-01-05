@@ -71,6 +71,7 @@ const login = () => {
             />
             
             <PasswordInput 
+              
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

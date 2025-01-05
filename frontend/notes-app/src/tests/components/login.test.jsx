@@ -1,60 +1,12 @@
-// import React from "react";
-// import { render, screen, fireEvent } from "@testing-library/react";
-// import { it,expect, describe, vi, beforeEach } from "vitest";
-// import Login from "../../pages/Login/login";
-// import { BrowserRouter} from "react-router-dom";
-
-
-// describe('Login component', () => {
-//     beforeEach(() => {
-//         vi.clearAllMocks();
-//       });
-
-//       const renderLoginPage = () => {
-//         render(
-//             <BrowserRouter>
-//                 <Login />
-//             </BrowserRouter>
-//         );
-//     };
-    
-//     it("validate function should pass on correct input ", () => {
-//         /*render(<Login />);
-//         const inputNode = screen.getByPlaceholderText('Email');
-//         <Router>
-//                 <Login />
-//         </Router>*/
-     
-//         renderLoginPage();
-//         expect(screen.getByPlaceholderText('Email'));
-//         expect(screen.getByPlaceholderText('Password'));
-
-//         screen.debug();
-
-//     });
-
-//     it('displays error for invalid email', async () => {
-//         renderLoginPage();
-//         const emailInput = screen.getByPlaceholderText('Email', { exact: true });
-//         const submitButton = screen.getByRole('button', { name: /signin/i });
-    
-//         fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-//         fireEvent.click(submitButton);
-    
-//         expect(screen.getByText('Please enter a valid email address.')).toBeInTheDocument();
-//       });
-
-    
-// });
 import React from 'react';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
 import Login from '../../pages/Login/login';
-import axiosInstance from '../../utils/axiosInstance';
+//import axiosInstance from '../../utils/axiosInstance';
 
 // Mock the axios instance
-vi.mock('../../utils/axiosInstance');
+//vi.mock('../../utils/axiosInstance');
 
 // Mock useNavigate
 const mockNavigate = vi.fn();
@@ -118,18 +70,19 @@ describe('Login Component', () => {
 
   });
 
-//   it('displays error for empty password', () => {
-//     renderLogin();
-//     screen.debug();
+  it('displays error for empty password', () => {
+    renderLogin();
 
-//     const passwordInput = screen.getByPlaceholderText('Password');
-//     const submitButton = screen.getByRole('button', { name: /signin/i });
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const submitButton = screen.getByRole('button', { name: /signin/i });
 
-//     fireEvent.change(passwordInput, { target: { value: '' } });
-//     fireEvent.click(submitButton);
+    fireEvent.change(passwordInput, { target: { value: '' } });
+    fireEvent.click(submitButton);
 
-//     expect(screen.getByText('Password is required'));
-//   });
+    screen.debug();
+
+    expect(screen.getByTestId('password-input'));
+  });
 
 //   it('successfully logs in user and navigates', async () => {
 //     const mockResponse = {

@@ -3,8 +3,13 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
     branches: [ "workflow/multistep" ]
+<<<<<<< HEAD
   pull_request:
     branches: [ "master" ]
+=======
+  #pull_request:
+    #branches: [ "master" ]
+>>>>>>> 676369903ad824c0c2615b5348cc338236b5165e
 
 jobs:
 

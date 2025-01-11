@@ -35,4 +35,3 @@ jobs:
           context: backend/.
           push: true
           tags: sqlviren/sticky-note-backend:latest
-          

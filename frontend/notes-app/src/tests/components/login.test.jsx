@@ -35,6 +35,8 @@ describe('Login Component', () => {
     );
   };
 
+  //Below codes testing login component renders correctly
+
   it('renders login form correctly', () => {
     renderLogin();
     expect(screen.getByPlaceholderText('Email'));
@@ -138,4 +140,3 @@ describe('Login Component', () => {
     expect(signupLink.getAttribute('href')).toBe('/signup');
   });
 });
-

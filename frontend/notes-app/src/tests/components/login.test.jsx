@@ -35,9 +35,7 @@ describe('Login Component', () => {
     );
   };
 
-//Below codes testing login component renders correctly
-
-
+// Test case to render login form
   it('renders login form correctly', () => {
     renderLogin();
     expect(screen.getByPlaceholderText('Email'));
@@ -45,6 +43,7 @@ describe('Login Component', () => {
     expect(screen.getByRole('button', { name: /signin/i }));
   });
 
+// Test case to display error for invalid email
   it('displays error for invalid email', async () => {
     renderLogin();
     screen.debug();
@@ -68,6 +67,7 @@ describe('Login Component', () => {
 
   });
 
+ // Test case to display error for empty password 
   it('displays error for empty password', () => {
     renderLogin();
 
@@ -82,6 +82,7 @@ describe('Login Component', () => {
     expect(screen.getByTestId('password-input'));
   });
 
+  // Test case to successfully logs in user and navigates
   it('successfully logs in user and navigates', async () => {
     const mockResponse = {
       data: {
@@ -110,6 +111,7 @@ describe('Login Component', () => {
     });
   });
 
+  // Test case to handles login error from server
   it('handles login error from server', async () => {
     const mockError = {
       response: {
@@ -135,6 +137,7 @@ describe('Login Component', () => {
     });
   });
 
+  // Test case to navigates signup page when clicking create account link
   it('navigates to signup page when clicking create account link', () => {
     renderLogin();
     const signupLink = screen.getByText('Create Account');

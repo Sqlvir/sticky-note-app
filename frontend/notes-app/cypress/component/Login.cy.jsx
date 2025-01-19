@@ -42,8 +42,8 @@ describe('Login Component', () => {
     cy.get('input[type="password"]').type(testPassword);
     cy.get('button[type="submit"]').click();
 
-    // Add assertions based on your login logic
-    // Example: checking if navigation occurs after successful login
+    // Add assertions based on login logic
+    // Checking if navigation occurs after successful login
     cy.url().should('not.include', '/login');
   });
 

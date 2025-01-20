@@ -117,12 +117,15 @@ const Home = () => {
 
      try {
         const response = await axiosInstance.put("/update-note-pinned/" + noteId, {
-           isPinned: !noteId.isPinned,
+           isPinned: !noteData.isPinned,
         });
 
         if (response.data && response.data.note) {
-          showToastMessage("Note Pinned Successfully")
-          getAllNotes();
+         //  showToastMessage("Note Pinned Successfully")
+         //  getAllNotes();
+         const message = noteData.isPinned ? "Note Unpinned Successfully" : "Note Pinned Successfully";
+         showToastMessage(message);
+         getAllNotes();
         }
      } catch (error) {
          console.log(error);

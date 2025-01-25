@@ -27,6 +27,10 @@
      color:#333!important;
    }
 
+   .addNotes{
+    background: rgb(232 242 255)!important;
+   }
+
    .addNotes:hover{
       border-radius: 50%;
    }
@@ -77,13 +81,14 @@
 
   .addNotes:hover{
      /*background-color: rgb(37 99 235 / 1);*/
-     background: linear-gradient(to right, #f7971e, #ffd200);
+     background: linear-gradient(to right, #f7971e, #ffd200)!important;
 
   }
 
   .pinNotes:hover{
-    /*background-color: rgb(241 245 249 / 1);*/
-    background-color: rgb(236, 240, 241/3);
+    /*background-color: rgb(241 245 249 / 1);
+    background: rgb(236 240 241 / 3);*/
+    background: rgb(232 242 255)!important;
     border: 1px solid #f0eded;
   }
 
@@ -216,14 +221,14 @@
   font-weight: 800;
 }
 
-.card-notes .child-box { 
-  text-overflow: ellipsis; 
-  display: inline-block; 
-  max-width: 70%; 
-  width: auto; 
-  white-space: nowrap; 
-  overflow: hidden; 
+.card-notes { 
+  max-width: 100%; 
+  width: auto;
 } 
+
+.card-section .grid-cols-3 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 
 .card-notes .child-box.no-max-width { 
 max-width: none; 
@@ -236,6 +241,15 @@ display: none;
 .card-notes .box::after { 
   content: 'X'; 
   display: inline-block; 
+}
+
+.hide-tags{
+  border-radius: 2.05em!important;
+  background: rgb(232 242 255)!important;
+}
+.show-tags{
+  border-radius: 2.05em!important;
+  background: rgb(232 242 255)!important;
 }
 
 }

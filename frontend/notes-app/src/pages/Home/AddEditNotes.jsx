@@ -85,15 +85,15 @@ const AddEditNotes = ({noteData, type, getAllNotes, onClose, showToastMessage}) 
   return (
     <div className='relative'>
        <button 
-         className='w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50'
+         className='w-9 h-9 rounded-3xl flex items-center justify-center absolute -top-4 -right-4 shadow-sm transition-all duration-200 hover:shadow-sm closed-button'
          onClick={onClose}
        >
-         <MdClose className="text-xl text-slate-400" />
+         <MdClose className="text-2xl hover:text-slate-800" />
        </button>
 
       <div className='flex flex-col gap-2'>
         <label className='input-label'>Title</label>
-        <input type="text" className='text-2md text-slate-950 rounded border px-2 py-1 outline-none' placeholder='Enter title!' 
+        <input type="text" className='text-sm text-slate-950 rounded border px-2 py-1 outline-none' placeholder='Enter title' 
            value={title}
            onChange={({target}) => setTitle(target.value)}
         />
@@ -102,7 +102,7 @@ const AddEditNotes = ({noteData, type, getAllNotes, onClose, showToastMessage}) 
       <div className='flex flex-col gap-2 mt-4'>
         <label className='input-label'>Description</label>
         <textarea type="text" className='text-sm text-slate-950 rounded outline-none bg-slate-50 p-2 rounded'
-          placeholder='Enter description!'
+          placeholder='Enter description'
           rows={10}
           value={content}
            onChange={({target}) => setContent(target.value)}

@@ -1,8 +1,13 @@
 import React from 'react'
-import { getAvatarColor, getInitials } from '../../utils/helper'
+import { getAvatarColor, getInitials, preventBackNavigation } from '../../utils/helper'
 
 
 const ProfileInfo = ({ userInfo, onLogout }) => {
+  const handleLogout = () => {
+    preventBackNavigation();
+    onLogout();
+  };
+
   return (
     userInfo && <div className='flex items-center gap-3'>
       <>
@@ -11,7 +16,7 @@ const ProfileInfo = ({ userInfo, onLogout }) => {
         </div>
         <div>
           <p className='text-sm font-medium'>{userInfo.fullName}</p>
-          <button className='text-sm text-slate-900 font-medium primary-logout' onClick={onLogout}>LogOut</button>
+          <button className='text-sm text-slate-900 font-medium primary-logout' onClick={handleLogout}>LogOut</button>
         </div>
       </>
     </div>

@@ -77,7 +77,7 @@ const NoteCard = ({
                 <div className="flex flex-wrap gap-1 mt-2">
                   {tags.map((item, index) => (
                     <span key={index} title={item}>
-                      #{truncateTag(item)}{index !== tags.length - 1 ? ', ' : ''}
+                      #{truncateTag(item)}{index !== tags.length - 1 ? ' , ' : ''}
                     </span>
                   ))}
                   {tags.length > 3 && (
@@ -93,7 +93,7 @@ const NoteCard = ({
                 <div className="flex flex-wrap gap-1">
                   {tags.slice(0, 3).map((item, index) => (
                     <span key={index} title={item}>
-                      #{truncateTag(item)}{index !== Math.min(2, tags.length - 1) ? ', ' : ''}
+                      #{truncateTag(item)}{index !== Math.min(2, tags.length - 1) ? ' , ' : ''}
                     </span>
                   ))}
                   {tags.length > 3 && (

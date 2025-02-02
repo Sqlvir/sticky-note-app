@@ -20,11 +20,20 @@
    .searchbox-width{
     width:30rem;
    }
+
+   .searchbox-width:hover{
+    background:white;
+    border:1px solid #eee;
+   }
   
    .searchbox::placeholder{
      font-size: 13px!important;
      font-weight:400!important;
      color:#333!important;
+   }
+
+   .addNotes{
+    background: rgb(232 242 255)!important;
    }
 
    .addNotes:hover{
@@ -77,19 +86,20 @@
 
   .addNotes:hover{
      /*background-color: rgb(37 99 235 / 1);*/
-     background: linear-gradient(to right, #f7971e, #ffd200);
+     background: linear-gradient(to right, #f7971e, #ffd200)!important;
 
   }
 
   .pinNotes:hover{
-    /*background-color: rgb(241 245 249 / 1);*/
-    background-color: rgb(236, 240, 241/3);
+    /*background-color: rgb(241 245 249 / 1);
+    background: rgb(236 240 241 / 3);*/
+    background: rgb(232 242 255)!important;
     border: 1px solid #f0eded;
   }
 
-  .pinNotes:hover .icon-btn{
-     color: black;
-  }
+  /*.pinNotes:hover .icon-btn{
+     color: red;
+  }*/
 
   .drop-shadow{
     padding-left: 6%!important;
@@ -141,14 +151,15 @@
   }
 
   .form-style .signin-text, .form-style .signup-text{
-    background: linear-gradient(#f7971e, #ffd200);
-    -webkit-background-clip: text;
-            background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #f48907;
     font-weight: 600;
   }
 
   .form-style .signin-text:hover, .form-style .signup-text:hover{
+    background: linear-gradient(#f7971e, #ffd200);
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
     border-bottom: 1px solid #feae4d;
   }
 
@@ -197,7 +208,7 @@
 
   .notes-img{
     width:400px!important;
-    margin-bottom:20px;
+    margin-bottom:0px;
   }
 
   /*.card-notes{
@@ -216,6 +227,9 @@
   font-weight: 800;
 }
 
+.card-notes { 
+  max-width: 100%; 
+  width: auto;
 
 .card-notes .child-box { 
   text-overflow: ellipsis; 
@@ -225,6 +239,10 @@
   white-space: nowrap; 
   overflow: hidden; 
 } 
+
+.card-section .grid-cols-3 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 
 .card-notes .child-box.no-max-width { 
 max-width: none; 
@@ -237,6 +255,35 @@ display: none;
 .card-notes .box::after { 
   content: 'X'; 
   display: inline-block; 
+}
+
+.hide-tags{
+  border-radius: 2.05em!important;
+  background: rgb(232 242 255)!important;
+}
+.show-tags{
+  border-radius: 2.05em!important;
+  background: rgb(232 242 255)!important;
+}
+
+.leading-7
+{
+   font-size: 1.20em;  
+   color:rgb(95,99,104)!important;
+}
+
+.unpin-tooltip{
+  width: 85px!important;
+}
+
+.closed-button{
+  background: #f48907!important;
+  color:#fff;
+}
+
+.closed-button:hover{
+  background: #fcb155!important;
+  color:#000;
 }
 
 }

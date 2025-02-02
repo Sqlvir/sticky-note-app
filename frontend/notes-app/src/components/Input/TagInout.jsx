@@ -34,7 +34,7 @@ const TagInout = ({ tags, setTags}) => {
             type="text" 
             value={inputValue}
             className='text-sm bg-transparent border px-3 py-2 rounded outline-none' 
-            placeholder='Enter tags!' 
+            placeholder='Enter tags' 
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />

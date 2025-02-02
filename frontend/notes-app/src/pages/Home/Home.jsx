@@ -117,12 +117,15 @@ const Home = () => {
 
      try {
         const response = await axiosInstance.put("/update-note-pinned/" + noteId, {
-           isPinned: !noteId.isPinned,
+           isPinned: !noteData.isPinned,
         });
 
         if (response.data && response.data.note) {
-          showToastMessage("Note Pinned Successfully")
-          getAllNotes();
+         //  showToastMessage("Note Pinned Successfully")
+         //  getAllNotes();
+         const message = noteData.isPinned ? "Note Unpinned Successfully" : "Note Pinned Successfully";
+         showToastMessage(message);
+         getAllNotes();
         }
      } catch (error) {
          console.log(error);
@@ -147,7 +150,7 @@ const Home = () => {
 
       <div className="container mx-auto card-section">
         {allNotes.length > 0 ? (
-          <div className="grid grid-cols-3 gap-4 mt-8">
+          <div className="grid grid-cols-3 gap-4 mt-8 mb-12">
          {allNotes.map((item, index) => (
               <NoteCard 
                key={item._id}
@@ -184,8 +187,12 @@ const Home = () => {
          onRequestClose={() => {}}
          style={{
             overlay: {
-               backgroundColor: "rgb(0 0 0 / 71%)",
-            },
+               backgroundColor: "rgb(0 0 0 / 85%)",
+               zIndex: 1000 // Add this line
+             },
+             content: {
+               zIndex: 1001 // Add this line
+             }
          }}
          contentLabel=""
          className="w-[33%] max-h-3/4 bg-white rounded-md mx-auto mt-40 p-5 overflow-scroll"

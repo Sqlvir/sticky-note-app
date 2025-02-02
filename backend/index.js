@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 
 mongoose.connect(config.connectionString);
 
+console.log("Connected to MongoDB");
+
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
 
@@ -326,7 +328,6 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
        });
     }
 });
-
 
 app.listen(8000);
 

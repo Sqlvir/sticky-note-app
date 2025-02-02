@@ -1,21 +1,26 @@
 import React from 'react'
-import { getInitials } from '../../utils/helper'
+import { getAvatarColor, getInitials, preventBackNavigation } from '../../utils/helper'
 
 
 const ProfileInfo = ({ userInfo, onLogout }) => {
-  return (
-   userInfo && <div className='flex items-center gap-3'>
-        <div className='w-12 h-12 flex items-center justify-center rounded-full text-slate-950 font-medium hover:shadow-md transition-all ease-in-out profile-avatar' >
-            {getInitials(userInfo?.fullName)}
-        </div>
+  const handleLogout = () => {
+    preventBackNavigation();
+    onLogout();
+  };
 
-        <div>
-            <p className='text-sm font-medium'>{userInfo.fullName}</p>
-            <button className='text-sm text-slate-900 font-medium primary-logout' onClick={onLogout}>LogOut</button>
+  return (
+    userInfo && <div className='flex items-center gap-3'>
+      <>
+        <div className={`w-10 h-10 rounded-full ${getAvatarColor(userInfo.fullName)} flex items-center justify-center text-white hover:shadow-md transition-all ease-in-out font-medium cursor-pointer`}>
+        {getInitials(userInfo?.fullName)}
         </div>
+        <div>
+          <p className='text-sm font-medium'>{userInfo.fullName}</p>
+          <button className='text-sm text-slate-900 font-medium primary-logout' onClick={handleLogout}>LogOut</button>
+        </div>
+      </>
     </div>
-    
-  )
-}
+  );  
+};
 
 export default ProfileInfo

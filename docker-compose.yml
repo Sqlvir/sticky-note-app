@@ -1,0 +1,31 @@
+services: 
+  frontend:
+    build: 
+      context: ./frontend/notes-app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://sticky-note-app-mongodb-1:27017
+  mongodb: 
+    image: mongodb/mongodb-community-server:latest
+    ports:
+      - "8081:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:
+    driver: local

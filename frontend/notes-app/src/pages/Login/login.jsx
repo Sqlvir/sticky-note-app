@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+//import Navbar from '../../components/Navbar/Navbar'
 import {Link, useNavigate} from 'react-router-dom'
 import PasswordInput from '../../components/Input/PasswordInput'
 import { validateEmail } from '../../utils/helper'
@@ -65,11 +65,13 @@ const login = () => {
                type="text"
                placeholder="Email"
                className="input-box"
+               data-testid="email-input"
                value={email}
                onChange={(e) => setEmail(e.target.value)}
             />
             
             <PasswordInput 
+              
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

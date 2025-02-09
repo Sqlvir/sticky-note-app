@@ -230,6 +230,14 @@
 .card-notes { 
   max-width: 100%; 
   width: auto;
+
+.card-notes .child-box { 
+  text-overflow: ellipsis; 
+  display: inline-block; 
+  max-width: 70%; 
+  width: auto; 
+  white-space: nowrap; 
+  overflow: hidden; 
 } 
 
 .card-section .grid-cols-3 {

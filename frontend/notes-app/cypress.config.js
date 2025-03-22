@@ -6,6 +6,12 @@ export default defineConfig({
       framework: "react",
       bundler: "vite",
     },
-    supportFile: 'cypress/support/component.js',
+    supportFile: "cypress/support/component.js",
+  },
+
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
   },
 });
